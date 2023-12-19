@@ -4,13 +4,8 @@ import { errorHandler } from "../utils/error.js";
 // create a project
 export const createProject = async (req, res, next) => {
   try {
-    const { name, userId } = req.body;
-    const project = new Project({ name, userId }); // Assign userId to the project
-
-    // Check if the current user is the owner of the project
-    if (!project.userId || project.userId.toString() !== userId) {
-      return res.status(403).json({ error: 'Unauthorized access' });
-    }
+    const { name } = req.body;
+    const project = new Project({ name }); 
 
     const savedProject = await project.save();
     return res.status(201).json(savedProject);

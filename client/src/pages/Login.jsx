@@ -31,7 +31,7 @@ const Login = ({ setRoute, setOpen }) => {
   useEffect(() => {
     const submitFormData = async () => {
       try {
-        console.log("clicked");
+        // console.log("clicked");
         setLoading(true);
         const res = await fetch("/api/getUser", {
           method: "POST",

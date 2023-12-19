@@ -7,7 +7,6 @@ import { styles } from "../components/styles";
 
 const schema = Yup.object().shape({
   name: Yup.string().required("Please enter name"),
-  description: Yup.string().required("Please enter your description"),
 });
 
 const CreateProject = ({ setRoute, setOpen, handleClose }) => {
@@ -18,13 +17,11 @@ const CreateProject = ({ setRoute, setOpen, handleClose }) => {
   const [formData, setFormData] = useState({});
 
   const formik = useFormik({
-    initialValues: { name: "", description: "" },
+    initialValues: { name: ""},
     validationSchema: schema,
-    onSubmit: async ({ name, description }) => {
+    onSubmit: async ({ name }) => {
       setFormData({
-        name,
-        description,
-        userId: currentUser._id,
+        name
       });
     },
   });
@@ -51,16 +48,17 @@ const CreateProject = ({ setRoute, setOpen, handleClose }) => {
         navigate("/projects");
         handleClose();
       } catch (error) {
-        setLoading(error.message);
+        setError(error.message);
         setLoading(false);
       }
     };
-
-    if (formData.name && formData.description) {
+  
+    // Check if the required fields are present in formData
+    if (formData.name) {
       fetchData();
     }
   }, [formData, navigate, handleClose]);
-
+  
   const { errors, touched, values, handleChange, handleSubmit } = formik;
 
   return (
@@ -86,25 +84,6 @@ const CreateProject = ({ setRoute, setOpen, handleClose }) => {
             <span className="text-red-500 pt-2 block">{errors.name}</span>
           )}
         </div>
-        <div className="w-full mt-5 relative mb-1">
-          <label htmlFor="description" className={styles.label}>
-            Enter description
-          </label>
-          <input
-            type={"text"}
-            name="description"
-            id="description"
-            value={values.description}
-            onChange={handleChange}
-            placeholder="description"
-            className={`${
-              errors.description && touched.description && "border-red-500"
-            } ${styles.input}`}
-          />
-        </div>
-        {errors.description && touched.description && (
-          <span className="text-red-500 pt-2 block">{errors.description}</span>
-        )}
         <div className="w-full text-center mt-5">
           <input
             type="submit"
