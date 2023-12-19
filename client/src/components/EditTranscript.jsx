@@ -34,7 +34,7 @@ const UploadList = () => {
       setLoading(true);
   
       const res = await fetch(
-        `http://localhost:5000/api/upload/${firstId}/${secondId}`,
+        `/api/upload/${firstId}/${secondId}`,
         {
           method: "PUT",
           headers: {
@@ -68,7 +68,7 @@ const UploadList = () => {
       try {
         setLoading(true);
         const res = await fetch(
-          `http://localhost:5000/api/upload/${firstId}/${secondId}`
+          `/api/upload/${firstId}/${secondId}`
         );
         const data = await res.json();
         console.log(data);

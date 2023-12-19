@@ -22,7 +22,7 @@ const Projects = () => {
     const fetchProjects = async () => {
       try {
         setLoading(true);
-        const res = await fetch("http://localhost:5000/api/projects");
+        const res = await fetch("/api/projects");
         const data = await res.json();
         if (data.success === false) {
           setError(true);

@@ -33,7 +33,7 @@ const UploadList = ({ active }) => {
       try {
         setLoading(true);
         const res = await fetch(
-          `http://localhost:5000/api/uploads/${params.id}`
+          `/api/uploads/${params.id}`
         );
         const data = await res.json();
         if (data.success === false) {
@@ -57,7 +57,7 @@ const UploadList = ({ active }) => {
     try {
       setLoading(true);
       const res = await fetch(
-        `http://localhost:5000/api/upload/${params.id}/${projectId}`,
+        `/api/upload/${params.id}/${projectId}`,
         {
           method: "DELETE",
         }

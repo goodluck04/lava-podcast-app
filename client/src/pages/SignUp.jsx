@@ -33,7 +33,7 @@ const SignUp = ({ setRoute, setOpen }) => {
       try {
         console.log("clicked");
         setLoading(true);
-        const res = await fetch("http://localhost:5000/api/signup", {
+        const res = await fetch("/api/signup", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

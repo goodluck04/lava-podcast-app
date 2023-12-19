@@ -33,7 +33,7 @@ const Login = ({ setRoute, setOpen }) => {
       try {
         console.log("clicked");
         setLoading(true);
-        const res = await fetch("http://localhost:5000/api/getUser", {
+        const res = await fetch("/api/getUser", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

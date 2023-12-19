@@ -40,7 +40,7 @@ const UploadListModel = ({ setRoute, setOpen, }) => {
       try {
         // console.log("clicked");
         setLoading(true);
-        const res = await fetch(`http://localhost:5000/api/createUpload/${params.id}`, {
+        const res = await fetch(`/api/createUpload/${params.id}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

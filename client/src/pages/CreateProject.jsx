@@ -33,7 +33,7 @@ const CreateProject = ({ setRoute, setOpen, handleClose }) => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const res = await fetch("http://localhost:5000/api/createProject", {
+        const res = await fetch("/api/createProject", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
