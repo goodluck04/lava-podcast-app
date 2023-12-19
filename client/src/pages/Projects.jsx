@@ -16,7 +16,7 @@ const Projects = () => {
   const [loading, setLoading] = useState(false);
   const [projects, setProjects] = useState(null);
   const { currentUser } = useSelector((state) => state.user);
-  console.log(projects);
+  // console.log(projects);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -38,7 +38,7 @@ const Projects = () => {
       }
     };
     fetchProjects();
-  }, [currentUser._id]);
+  }, [currentUser]);
 
   return (
     <div>
@@ -67,7 +67,7 @@ const Projects = () => {
       {loading && <p className="text-center">Loading...</p>}
       <div className="mx-28 my-4 flex flex-wrap gap-16">
         {projects &&
-          projects.map((project) => (
+          projects?.map((project) => (
             <Link
               key={project._id}
               to={`/project/${project._id}`}

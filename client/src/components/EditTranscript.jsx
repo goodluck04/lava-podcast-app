@@ -71,9 +71,9 @@ const UploadList = () => {
           `/api/upload/${firstId}/${secondId}`
         );
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         if (data.success === false) {
-          console.log(data.message);
+          // console.log(data.message);
           setError(true);
           setLoading(false);
           return;
