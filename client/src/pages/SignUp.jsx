@@ -42,7 +42,7 @@ const SignUp = ({ setRoute, setOpen }) => {
         });
         const data = await res.json();
         if (data.success === false) {
-          toast.error("something went wrong");
+          toast.error(data.message);
           setError(data.message);
           setLoading(false);
           return;
